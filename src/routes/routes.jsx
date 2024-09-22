@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import MainLayout from "../layout/MainLayout/MainLayout";
 import Home from "../pages/Main/Home/Home";
-import Login from "../pages/Main/Login/Login";
+import SignIn from "../pages/Main/SignIn/SignIn";
 import SignUp from "../pages/Main/SignUp/SignUp";
 import Dashboard from "../layout/DashboardLayout/DashboardLayout";
 import AllTask from "../pages/Dashboard/AllTask/AllTask";
@@ -24,11 +24,11 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "login",
-        element: <Login />,
+        path: "sign-in",
+        element: <SignIn />,
       },
       {
-        path: "sing-up",
+        path: "sign-up",
         element: <SignUp />,
       },
     ],

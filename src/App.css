@@ -6,3 +6,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* --- Reusable class --- */
+.wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+}
