@@ -10,7 +10,7 @@ const Home = () => {
             Unlock your productivity today ..!
           </h1>
           <p className="text-gray-700 leading-7">
-            Welcome to <span className="text-[#2FCD71]">Task Track!</span>{" "}
+            Welcome to <span className="text-[#40C057]">Task Track!</span>{" "}
             Easily organize tasks, track progress, <br /> and boost
             productivity. Say goodbye to chaos, hello to <br /> efficiency. Get
             started now!
