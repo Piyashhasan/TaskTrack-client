@@ -17,12 +17,12 @@ const Home = () => {
           </p>
           <Link to="/dashboard">
             <button className="my-10 bg-[#2FCD71] px-10 py-3 text-white rounded-md">
-              Let's get started!
+              Let&apos;s get started!
             </button>
           </Link>
 
           <div className="flex items-center justify-center mt-5">
-            <div className="p-5 max-w-[800px] object-contain shadow-[0px_10px_36px_0px_rgba(0,0,0,0.16),_0px_0px_0px_1px_rgba(0,0,0,0.06)] rounded-md">
+            <div className="p-5 max-w-[850px] object-contain shadow-[0px_10px_36px_0px_rgba(0,0,0,0.16),_0px_0px_0px_1px_rgba(0,0,0,0.06)] rounded-md">
               <img className="rounded-md" src={banner} alt="Banner Image" />
             </div>
           </div>
