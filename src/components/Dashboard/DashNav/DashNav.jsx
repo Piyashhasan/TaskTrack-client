@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/images/logo.svg";
 const DashNav = () => {
   return (
-    <nav className="bg-[#F9F9F9] p-5 flex items-center justify-between">
+    <nav className="bg-[#F9F9F9] py-5 px-3 flex items-center justify-between">
       <div className="flex items-center gap-x-8">
         <div className="w-[50px] h-[50px] object-contain object-center">
           <Link to="/home">
@@ -23,7 +23,7 @@ const DashNav = () => {
           </p>
         </div>
       </div>
-      <div>
+      <div className="mr-2">
         <button className="bg-[#1ABC9C] text-white text-[14px] px-8 py-3 rounded-full hover:bg-[#00A1F1]">
           Add a new Task
         </button>

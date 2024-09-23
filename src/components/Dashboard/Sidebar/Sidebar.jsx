@@ -9,7 +9,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="h-[calc(100vh-90px)] bg-[#F9F9F9] px-[30px] pt-10 relative">
+    <div className="h-[calc(100vh-90px)] bg-[#F9F9F9] px-[20px] pt-10 relative all-task">
       <ul className="flex flex-col items-center gap-y-10">
         <li className="relative group">
           <NavLink

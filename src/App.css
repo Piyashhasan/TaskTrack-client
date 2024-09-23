@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-/* scrollbar customize  */
+/* --- scrollbar customize ---  */
 ::-webkit-scrollbar {
   width: 5px;
   height: 100px;
@@ -21,18 +21,27 @@
   background: #2fcd71;
 }
 
+/* --- Hide Scroll Bar --- */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* --- Reusable class --- */
 .wrapper {
   max-width: 1300px;
   margin: 0 auto;
 }
 
-/* tooltip styles */
+/* --- tooltip styles --- */
 .tooltip {
   @apply absolute left-full top-1/2 -translate-y-1/2 ml-2 opacity-0 group-hover:opacity-100 bg-[#41BF81] text-white text-xs rounded px-2 py-1 transition-opacity duration-300 before:content-[''] before:absolute before:-left-2 before:top-1/2 before:-translate-y-1/2 before:border-[4px] before:border-transparent before:border-r-[#41BF81];
 }
 
-/* link active & inActive */
+/* --- link active & inActive --- */
 .active {
   @apply text-[#41BF81] text-[28px];
 }
