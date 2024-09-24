@@ -9,6 +9,7 @@ import CompleteTask from "../pages/Dashboard/CompleteTask/CompleteTask";
 import PendingTask from "../pages/Dashboard/PendingTask/PendingTask";
 import OverDueTask from "../pages/Dashboard/OverDueTask/OverDueTask";
 import NotFound from "../shared/NotFound/NotFound";
+import PrivateRoute from "../shared/PrivateRoute/PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -25,11 +26,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "sign-in",
-        element: <SignIn />,
+        element: <PrivateRoute element={<SignIn />} isPrivate={false} />,
       },
       {
         path: "sign-up",
-        element: <SignUp />,
+        element: <PrivateRoute element={<SignUp />} isPrivate={false} />,
       },
     ],
   },
@@ -43,19 +44,19 @@ const routes = createBrowserRouter([
       },
       {
         path: "all",
-        element: <AllTask />,
+        element: <PrivateRoute element={<AllTask />} isPrivate={true} />,
       },
       {
         path: "complete",
-        element: <CompleteTask />,
+        element: <PrivateRoute element={<CompleteTask />} isPrivate={true} />,
       },
       {
         path: "pending",
-        element: <PendingTask />,
+        element: <PrivateRoute element={<PendingTask />} isPrivate={true} />,
       },
       {
         path: "due",
-        element: <OverDueTask />,
+        element: <PrivateRoute element={<OverDueTask />} isPrivate={true} />,
       },
     ],
   },

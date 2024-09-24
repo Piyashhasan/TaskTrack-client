@@ -5,9 +5,18 @@ import {
   MdAddTask,
 } from "react-icons/md";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../../features/auth/authSlice";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logOut());
+    navigate("/sign-in");
+  };
   return (
     <div className="h-[calc(100vh-90px)] bg-[#F9F9F9] px-[20px] pt-10 relative all-task">
       <ul className="flex flex-col items-center gap-y-10">
@@ -49,7 +58,7 @@ const Sidebar = () => {
         </li>
       </ul>
       <ul className="flex flex-col items-center gap-y-10 absolute bottom-0">
-        <li className="relative group">
+        <li onClick={handleLogout} className="relative group">
           <Link to="/home">
             <RiLogoutCircleLine className="text-[28px] my-5 hover:text-[#41BF81]" />
           </Link>

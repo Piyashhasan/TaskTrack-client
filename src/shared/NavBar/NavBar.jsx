@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const { name, email } = useSelector((state) => state.auth.user);
+
   return (
     <nav>
       <div className="wrapper py-4">
@@ -19,30 +22,38 @@ const NavBar = () => {
 
           <div>
             <ul className="flex items-center gap-8">
-              <li>
-                <Link
-                  className="bg-[#2FCD71] py-3 px-8 text-white rounded-xl hover:bg-[#1ABC9C]"
-                  to="/sign-in"
-                >
-                  Sign In
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="py-3 px-8 text-[#2FCD71] border border-1 border-[#2FCD71] rounded-xl hover:bg-[#1ABC9C] hover:text-white"
-                  to="/sign-up"
-                >
-                  Sign Up
-                </Link>
-              </li>
-              {/* <li>
-                <Link
-                  className="py-3 px-8 text-[#2FCD71] border border-1 border-[#2FCD71] rounded-xl hover:bg-[#1ABC9C] hover:text-white"
-                  to="/dashboard"
-                >
-                  Dashboard
-                </Link>
-              </li> */}
+              {!name && !email && (
+                <li>
+                  <Link
+                    className="bg-[#2FCD71] py-3 px-8 text-white rounded-xl hover:bg-[#1ABC9C]"
+                    to="/sign-in"
+                  >
+                    Sign In
+                  </Link>
+                </li>
+              )}
+
+              {!name && !email && (
+                <li>
+                  <Link
+                    className="py-3 px-8 text-[#2FCD71] border border-1 border-[#2FCD71] rounded-xl hover:bg-[#1ABC9C] hover:text-white"
+                    to="/sign-up"
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+              )}
+
+              {name && email && (
+                <li>
+                  <Link
+                    className="py-3 px-8 text-[#2FCD71] border border-1 border-[#2FCD71] rounded-xl hover:bg-[#1ABC9C] hover:text-white"
+                    to="/dashboard"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
