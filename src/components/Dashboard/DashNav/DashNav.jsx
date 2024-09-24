@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/images/logo.svg";
+import { useState } from "react";
+import { Dialog } from "primereact/dialog";
+import AddTaskForm from "../AddTaskForm/AddTaskForm";
+
 const DashNav = () => {
+  const [visible, setVisible] = useState(false);
   return (
     <nav className="bg-[#F9F9F9] py-5 px-3 flex items-center justify-between">
       <div className="flex items-center gap-x-8">
@@ -24,9 +29,23 @@ const DashNav = () => {
         </div>
       </div>
       <div className="mr-2">
-        <button className="bg-[#1ABC9C] text-white text-[14px] px-8 py-3 rounded-full hover:bg-[#00A1F1]">
-          Add a new Task
+        <button
+          onClick={() => setVisible(true)}
+          className="bg-[#1ABC9C] text-white text-[14px] px-8 py-3 rounded-full hover:bg-[#00A1F1]"
+        >
+          Add Task
         </button>
+        <Dialog
+          visible={visible}
+          onHide={() => {
+            if (!visible) return;
+            setVisible(false);
+          }}
+          style={{ width: "35vw" }}
+          breakpoints={{ "960px": "75vw", "641px": "100vw" }}
+        >
+          <AddTaskForm />
+        </Dialog>
       </div>
     </nav>
   );

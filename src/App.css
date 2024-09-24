@@ -48,3 +48,9 @@
 .inActive {
   @apply text-[28px] hover:text-[#41BF81];
 }
+
+/* --- Modal --- */
+.p-dialog-header {
+  padding-top: 5px;
+  padding-right: 5px;
+}
