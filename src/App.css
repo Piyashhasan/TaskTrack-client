@@ -38,7 +38,7 @@
 
 /* --- tooltip styles --- */
 .tooltip {
-  @apply absolute left-full top-1/2 -translate-y-1/2 ml-2 opacity-0 group-hover:opacity-100 bg-[#41BF81] text-white text-xs rounded px-2 py-1 transition-opacity duration-300 before:content-[''] before:absolute before:-left-2 before:top-1/2 before:-translate-y-1/2 before:border-[4px] before:border-transparent before:border-r-[#41BF81];
+  @apply absolute z-20 left-full top-1/2 -translate-y-1/2 ml-2 opacity-0 group-hover:opacity-100 bg-[#41BF81] text-white text-xs rounded px-2 py-1 transition-opacity duration-300 before:content-[''] before:absolute before:-left-2 before:top-1/2 before:-translate-y-1/2 before:border-[4px] before:border-transparent before:border-r-[#41BF81];
 }
 
 /* --- link active & inActive --- */

@@ -3,13 +3,12 @@ import { useForm } from "react-hook-form";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import {
   resetSignInState,
   setUser,
   signInHandler,
 } from "../../../features/auth/authSlice";
-
-import toast from "react-hot-toast";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ const SignIn = () => {
           dispatch(setUser({ fullName, email }));
         })
         .catch((error) => {
-          console.error("Sign-In failed", error);
+          console.error("Sign in failed", error);
         });
     }
     reset();
@@ -49,7 +48,7 @@ const SignIn = () => {
   // --- handle redirect ---
   useEffect(() => {
     if (user.name && user.email) {
-      toast.success("Successfully Sign In", { id: "signIn" });
+      toast.success("Sign in", { id: "signIn" });
       navigate("/dashboard");
     }
   }, [user, navigate]);

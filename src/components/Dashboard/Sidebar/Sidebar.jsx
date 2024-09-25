@@ -8,6 +8,7 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../../features/auth/authSlice";
+import { apiSlice } from "../../../features/apislice/apiSlice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,9 @@ const Sidebar = () => {
   const handleLogout = () => {
     dispatch(logOut());
     navigate("/sign-in");
+    dispatch(apiSlice.util.resetApiState());
   };
+
   return (
     <div className="h-[calc(100vh-90px)] bg-[#F9F9F9] px-[20px] pt-10 relative all-task">
       <ul className="flex flex-col items-center gap-y-10">

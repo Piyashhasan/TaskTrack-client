@@ -43,20 +43,21 @@ const SignUp = () => {
 
   // --- handle toast and redirect ---
   useEffect(() => {
-    if (isSuccess) {
-      navigate("/sign-in");
-    }
-
     if (isLoading) {
       toast.loading("Loading ...", { id: "signUp" });
     }
+
     if (!isLoading && isError) {
       if (errorMessage) {
         toast.error(errorMessage, { id: "signUp" });
       }
     }
+
     if (isSuccess) {
-      toast.success("Successfully Sign Up", { id: "signUp" });
+      toast.success("Sign up", { id: "signUp" });
+      setTimeout(() => {
+        navigate("/sign-in");
+      }, 1200);
     }
   }, [isSuccess, isLoading, isError, navigate, dispatch, errorMessage]);
 

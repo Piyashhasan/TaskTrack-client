@@ -3,11 +3,19 @@ import logo from "../../../assets/images/logo.svg";
 import { useState } from "react";
 import { Dialog } from "primereact/dialog";
 import AddTaskForm from "../AddTaskForm/AddTaskForm";
+import { useSelector } from "react-redux";
 
 const DashNav = () => {
   const [visible, setVisible] = useState(false);
+  const { allTasks } = useSelector((state) => state.tasks);
+
+  // --- pending task ---
+  const pendingTask = allTasks?.filter(
+    (task) => task.completed === false
+  ).length;
+
   return (
-    <nav className="bg-[#F9F9F9] py-5 px-3 flex items-center justify-between">
+    <nav className="bg-[#F9F9F9] py-5 px-3 flex items-center justify-between z-20">
       <div className="flex items-center gap-x-8">
         <div className="w-[50px] h-[50px] object-contain object-center">
           <Link to="/home">
@@ -24,7 +32,8 @@ const DashNav = () => {
             </p>
           </div>
           <p className="text-[14px]">
-            You have <span className="text-[#40C057]">3</span> active tasks
+            You have <span className="text-[#40C057]">{pendingTask}</span>{" "}
+            active tasks
           </p>
         </div>
       </div>
@@ -44,7 +53,7 @@ const DashNav = () => {
           style={{ width: "35vw" }}
           breakpoints={{ "960px": "75vw", "641px": "100vw" }}
         >
-          <AddTaskForm />
+          <AddTaskForm setVisible={setVisible} />
         </Dialog>
       </div>
     </nav>

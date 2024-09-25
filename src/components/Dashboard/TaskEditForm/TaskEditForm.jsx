@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
-import { useCreateTaskMutation } from "../../../services/tasksApi";
+import { useUpdateTaskMutation } from "../../../services/tasksApi";
 import toast from "react-hot-toast";
 
-const AddTaskForm = ({ setVisible }) => {
-  const [createTask, { isLoading, isSuccess, isError }] =
-    useCreateTaskMutation();
+const TaskEditForm = ({ setVisible, task }) => {
+  const [updateTask, { isLoading, isSuccess, isError }] =
+    useUpdateTaskMutation();
 
+  // --- form data state ---
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    priority: "low",
-    dueDate: "",
-    completed: "",
+    id: task?._id,
+    title: task?.title || "",
+    description: task?.description || "",
+    priority: task?.priority || "low",
+    dueDate: task?.dueDate
+      ? new Date(task.dueDate).toISOString().split("T")[0]
+      : "",
+    completed: task?.completed ? "true" : "false",
   });
 
+  //   --- handle input change ---
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -22,6 +27,7 @@ const AddTaskForm = ({ setVisible }) => {
     }));
   };
 
+  //   --- handle form submit ---
   const handleSubmit = async (e) => {
     e.preventDefault();
     const taskData = {
@@ -30,7 +36,7 @@ const AddTaskForm = ({ setVisible }) => {
     };
 
     if (taskData) {
-      const res = await createTask(taskData);
+      const res = await updateTask(taskData);
       if (res) {
         setVisible(false);
       }
@@ -48,13 +54,13 @@ const AddTaskForm = ({ setVisible }) => {
   // --- Toast notifications ---
   useEffect(() => {
     if (isLoading) {
-      toast.loading("Loading ...", { id: "createTask" });
+      toast.loading("Loading ...", { id: "updateTask" });
     }
     if (!isLoading && isError) {
-      toast.error("Task not added.", { id: "createTask" });
+      toast.error("Task not update.", { id: "updateTask" });
     }
     if (isSuccess) {
-      toast.success("Created Task!", { id: "createTask" });
+      toast.success("Updated Task!", { id: "updateTask" });
     }
   }, [isLoading, isSuccess, isError]);
 
@@ -72,7 +78,6 @@ const AddTaskForm = ({ setVisible }) => {
             name="title"
             value={formData.title}
             onChange={handleChange}
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -86,7 +91,6 @@ const AddTaskForm = ({ setVisible }) => {
             rows={4}
             value={formData.description}
             onChange={handleChange}
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -98,7 +102,6 @@ const AddTaskForm = ({ setVisible }) => {
             name="priority"
             value={formData.priority}
             onChange={handleChange}
-            required
           >
             <option value="low">Low</option>
             <option value="medium">Medium</option>
@@ -114,8 +117,9 @@ const AddTaskForm = ({ setVisible }) => {
             type="date"
             name="dueDate"
             value={formData.dueDate}
-            onChange={handleChange}
-            required
+            onChange={(e) =>
+              setFormData({ ...formData, dueDate: e.target.value })
+            }
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -126,29 +130,26 @@ const AddTaskForm = ({ setVisible }) => {
             <label className="text-[14px]" htmlFor="completed">
               Completed
             </label>
-            <div>
-              <select
-                className="bg-[#F9F9F9] text-[14px] py-2 px-3 rounded-md border cursor-pointer"
-                name="completed"
-                value={formData.completed}
-                onChange={handleChange}
-                required
-              >
-                <option value="false">No</option>
-                <option value="true">Yes</option>
-              </select>
-            </div>
+            <select
+              className="bg-[#F9F9F9] text-[14px] py-2 px-3 rounded-md border cursor-pointer"
+              name="completed"
+              value={formData.completed}
+              onChange={handleChange}
+            >
+              <option value="false">No</option>
+              <option value="true">Yes</option>
+            </select>
           </div>
         </div>
         <button
           type="submit"
           className={`text-white text-[14px] py-2 rounded-md w-full hover:bg-blue-500 transition duration-200 ease-in-out bg-green-400`}
         >
-          Create Task
+          Update Task
         </button>
       </form>
     </div>
   );
 };
 
-export default AddTaskForm;
+export default TaskEditForm;

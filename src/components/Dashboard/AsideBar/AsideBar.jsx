@@ -3,16 +3,36 @@ import userIcon from "../../../assets/images/user.png";
 import ActivityChart from "../ActivityChart/ActivityChart";
 import { Dialog } from "primereact/dialog";
 import ProfileForm from "../ProfileForm/ProfileForm";
-
-const data = {
-  labels: ["Complete", "Pending"],
-  values: [300, 100],
-  backgroundColor: ["#2FCD71", "#EB4E31"],
-};
+import { useSelector } from "react-redux";
 
 const AsideBar = () => {
   const [visible, setVisible] = useState(false);
 
+  const { name } = useSelector((state) => state.auth.user);
+  const { allTasks } = useSelector((state) => state.tasks);
+
+  // --- complete task ---
+  const completeTask = allTasks.filter(
+    (task) => task.completed === true
+  ).length;
+
+  // --- pending task ---
+  const pendingTask = allTasks?.filter(
+    (task) => task.completed === false
+  ).length;
+
+  // --- due task ---
+  const currentDate = new Date();
+  const overdueTasks = allTasks.filter((task) => {
+    const dueDate = new Date(task.dueDate);
+    return dueDate < currentDate && !task.completed;
+  });
+
+  const data = {
+    labels: ["Complete", "Pending"],
+    values: [completeTask, pendingTask],
+    backgroundColor: ["#2FCD71", "#EB4E31"],
+  };
   return (
     <aside className="h-[calc(100vh-90px)] bg-[#F9F9F9] min-w-[300px] p-5 overflow-y-scroll">
       {/* --- user info start --- */}
@@ -30,7 +50,7 @@ const AsideBar = () => {
         <div>
           <p className="text-[20px] font-medium leading-7 text-black">Hello,</p>
           <p className="text-[20px] font-bold leading-7 text-black">
-            Piyash Hasan
+            {name ? name : "---"}
           </p>
         </div>
       </div>
@@ -43,7 +63,7 @@ const AsideBar = () => {
           <div className="flex items-center gap-x-4 py-2">
             <div className="w-[3px] h-[28px] bg-[#A855F7] rounded-full"></div>
             <h5 className="text-[36px] text-[#333333] font-medium leading-10">
-              4
+              {allTasks.length ? allTasks.length : 0}
             </h5>
           </div>
         </div>
@@ -52,16 +72,16 @@ const AsideBar = () => {
           <div className="flex items-center gap-x-4 py-2">
             <div className="w-[3px] h-[28px] bg-[#3AAFAE] rounded-full"></div>
             <h5 className="text-[36px] text-[#333333] font-medium leading-10">
-              3
+              {pendingTask ? pendingTask : 0}
             </h5>
           </div>
         </div>
         <div>
-          <p className="text-[15px] text-[#9CA3AF] leading-6">Open Tasks:</p>
+          <p className="text-[15px] text-[#9CA3AF] leading-6">Due Tasks:</p>
           <div className="flex items-center gap-x-4 py-2">
             <div className="w-[3px] h-[28px] bg-[#FB923C] rounded-full"></div>
             <h5 className="text-[36px] text-[#333333] font-medium leading-10">
-              3
+              {overdueTasks.length ? overdueTasks.length : 0}
             </h5>
           </div>
         </div>
@@ -70,7 +90,7 @@ const AsideBar = () => {
           <div className="flex items-center gap-x-4 py-2">
             <div className="w-[3px] h-[28px] bg-[#4ADE80] rounded-full"></div>
             <h5 className="text-[36px] text-[#333333] font-medium leading-10">
-              1
+              {completeTask ? completeTask : 0}
             </h5>
           </div>
         </div>

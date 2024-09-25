@@ -1,9 +1,9 @@
 import TaskItems from "../TaskItems/TaskItems";
 
-const Task = () => {
+const Task = ({ filterTasks }) => {
   return (
     <div className="mt-5">
-      <TaskItems />
+      <TaskItems filterTasks={filterTasks} />
     </div>
   );
 };

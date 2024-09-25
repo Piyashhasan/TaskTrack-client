@@ -69,11 +69,13 @@ export const authSlice = createSlice({
 
     resetSignInState: (state) => {
       state.signIn.isSuccess = false;
+      state.signIn.isError = false;
       state.signIn.errorMessage = null;
     },
 
     resetSignUpState: (state) => {
       state.signUp.isSuccess = false;
+      state.signUp.isError = false;
       state.signUp.errorMessage = null;
     },
 
