@@ -1,8 +1,12 @@
-# React + Vite
+**[Live link](https://task-tracke-app.netlify.app/home)**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## **Project Title**
 
-Currently, two official plugins are available:
+Task Track. It's a full-stack project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Project setup**
+
+- Clone the project.
+- Create a (.env.local) file in the root folder.
+- Add Url in .env.local file - (VITE_SERVER_URL = https://task-track-server.vercel.app)
+- run command ( npm run dev or yarn dev)
