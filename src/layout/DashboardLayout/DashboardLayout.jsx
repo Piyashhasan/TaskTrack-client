@@ -4,10 +4,12 @@ import DashNav from "../../components/Dashboard/DashNav/DashNav";
 import AsideBar from "../../components/Dashboard/AsideBar/AsideBar";
 import { useGetAllTasksQuery } from "../../services/tasksApi";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setAllTasks } from "../../features/task/tasksSlice";
+import ToggleAsideBar from "../../shared/ToggleAsideBar/ToggleAsideBar";
 
 const Dashboard = () => {
+  const [visibleRight, setVisibleRight] = useState(false);
   const dispatch = useDispatch();
   const { data } = useGetAllTasksQuery({});
 
@@ -19,14 +21,20 @@ const Dashboard = () => {
 
   return (
     <>
-      <DashNav />
+      <DashNav setVisibleRight={setVisibleRight} />
       <div className="flex">
         <Sidebar />
         <div className="w-full bg-[#F9F9F9]">
           <Outlet />
         </div>
-        <AsideBar />
+        <div className="hidden lg:block">
+          <AsideBar />
+        </div>
       </div>
+      <ToggleAsideBar
+        visibleRight={visibleRight}
+        setVisibleRight={setVisibleRight}
+      />
     </>
   );
 };

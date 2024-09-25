@@ -21,13 +21,13 @@ const PriorityFilterBtn = () => {
   };
 
   return (
-    <div className="bg-[#F9F9F9] px-3 py-2 rounded-lg">
-      <div className="flex items-center gap-x-3 text-[14px]">
+    <div className="bg-[#F9F9F9] p-2 sm:px-3 sm:py-2 rounded-lg">
+      <div className="flex items-center gap-x-2 sm:gap-x-3 text-[14px]">
         {priorities.map((priority) => (
           <button
             key={priority}
             onClick={() => handleClick(priority)}
-            className={`px-5 py-1 rounded-md transition-all duration-300 ease-in-out
+            className={`p-2 sm:px-5 sm:py-1 rounded-md transition-all duration-300 ease-in-out
               ${
                 activePriority === priority ? "bg-[#EDEDED] text-[#4AB5B4]" : ""
               }`}
