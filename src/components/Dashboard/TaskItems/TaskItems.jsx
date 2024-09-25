@@ -14,9 +14,11 @@ const TaskItems = ({ filterTasks }) => {
 
   const dispatch = useDispatch();
 
+  // --- delete task function call from rtq query ---
   const [deleteTask, { isLoading, isSuccess, isError }] =
     useDeleteTaskMutation();
 
+  // --- dispatch deleteTask function ---
   const handleDeleteTask = (id) => {
     dispatch(deleteTask(id));
   };

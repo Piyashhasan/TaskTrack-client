@@ -64,6 +64,7 @@ const SignUp = () => {
   return (
     <div className="wrapper py-5">
       <div className="flex items-center justify-center">
+        {/* --- sign up form start --- */}
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="relative m-[2rem] px-10 py-14 rounded-lg w-full max-w-[520px] shadow-[0px_10px_36px_0px_rgba(0,0,0,0.16),_0px_0px_0px_1px_rgba(0,0,0,0.06)]"
@@ -84,7 +85,7 @@ const SignUp = () => {
 
             {/* --- full name input --- */}
             <div className="mt-[1rem] flex flex-col">
-              <label htmlFor="email" className="mb-1 text-[#999]">
+              <label htmlFor="fullName" className="mb-1 text-[#999]">
                 Full Name
               </label>
               <input
@@ -189,6 +190,7 @@ const SignUp = () => {
             </div>
           </div>
         </form>
+        {/* --- sign up form end --- */}
       </div>
     </div>
   );

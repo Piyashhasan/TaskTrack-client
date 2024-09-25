@@ -54,3 +54,24 @@
   padding-top: 5px;
   padding-right: 5px;
 }
+
+/* --- Mobile nav Slide Effect start --- */
+.overly-effect {
+  text-align: center;
+  color: white;
+  padding: 1.25rem 0;
+  z-index: 50;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(65, 191, 129, 0.9);
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.overly-effect.open {
+  transform: translateX(0);
+}
+
+.overly-effect.close {
+  transform: translateX(-100%);
+}

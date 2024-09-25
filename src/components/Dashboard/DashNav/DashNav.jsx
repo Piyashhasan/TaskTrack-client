@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 
 const DashNav = () => {
   const [visible, setVisible] = useState(false);
+
+  // --- all task get from redux store ---
   const { allTasks } = useSelector((state) => state.tasks);
 
   // --- pending task ---
@@ -16,6 +18,7 @@ const DashNav = () => {
 
   return (
     <nav className="bg-[#F9F9F9] py-5 px-3 flex items-center justify-between z-20">
+      {/* --- dashboard nav left side start --- */}
       <div className="flex items-center gap-x-8">
         <div className="w-[50px] h-[50px] object-contain object-center">
           <Link to="/home">
@@ -37,6 +40,9 @@ const DashNav = () => {
           </p>
         </div>
       </div>
+      {/* --- dashboard nav left side end --- */}
+
+      {/* --- add task button start --- */}
       <div className="mr-2">
         <button
           onClick={() => setVisible(true)}
@@ -56,6 +62,7 @@ const DashNav = () => {
           <AddTaskForm setVisible={setVisible} />
         </Dialog>
       </div>
+      {/* --- add task button start --- */}
     </nav>
   );
 };

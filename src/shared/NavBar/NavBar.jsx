@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import MobileNav from "../MobileNav/MobileNav";
 
 const NavBar = () => {
+  const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
   const { name, email } = useSelector((state) => state.auth.user);
 
   return (
     <nav>
-      <div className="wrapper py-4">
+      <div className="wrapper py-4 px-4 xl:px-0">
         <div className="flex items-center justify-between">
           <Link to="/home">
             <div className="flex items-center gap-5">
@@ -20,7 +24,7 @@ const NavBar = () => {
             </div>
           </Link>
 
-          <div>
+          <div className="hidden sm:block">
             <ul className="flex items-center gap-8">
               {!name && !email && (
                 <li>
@@ -56,8 +60,21 @@ const NavBar = () => {
               )}
             </ul>
           </div>
+          <div
+            className="sm:hidden"
+            onClick={() => setToggleMobileMenu(!toggleMobileMenu)}
+          >
+            <GiHamburgerMenu className="text-3xl cursor-pointer text-[#0d0e43" />
+          </div>
         </div>
       </div>
+
+      {/* --- toggle mobile menu start --- */}
+      <MobileNav
+        toggleMobileMenu={toggleMobileMenu}
+        setToggleMobileMenu={setToggleMobileMenu}
+      />
+      {/* --- toggle mobile menu end --- */}
     </nav>
   );
 };

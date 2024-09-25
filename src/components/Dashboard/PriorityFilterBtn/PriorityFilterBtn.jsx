@@ -11,6 +11,7 @@ const PriorityFilterBtn = () => {
   const [activePriority, setActivePriority] = useState("All");
   const priorities = ["All", "Low", "Medium", "High"];
 
+  // --- handle filter button  ---
   const handleClick = (priority) => {
     setActivePriority(priority);
 

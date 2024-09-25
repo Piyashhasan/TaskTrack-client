@@ -3,13 +3,13 @@ import banner from "../../../assets/images/banner.png";
 
 const Home = () => {
   return (
-    <div className="wrapper py-20">
+    <div className="wrapper py-20 px-4 xl:px-0">
       <div className="flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-[38px] text-gray-700 font-semibold capitalize my-5">
+          <h1 className="text-[28px] sm:text-[38px] text-gray-700 font-semibold capitalize my-5">
             Unlock your productivity today ..!
           </h1>
-          <p className="text-gray-700 leading-7">
+          <p className="text-[14px] sm:text-[16px] text-gray-700 leading-7">
             Welcome to <span className="text-[#40C057]">Task Track!</span>{" "}
             Easily organize tasks, track progress, <br /> and boost
             productivity. Say goodbye to chaos, hello to <br /> efficiency. Get

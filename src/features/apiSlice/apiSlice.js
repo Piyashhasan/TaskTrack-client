@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+// --- root app api query ---
 export const apiSlice = createApi({
   reducerPath: "tasksApi",
   baseQuery: fetchBaseQuery({

@@ -14,6 +14,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // --- handle logout ---
   const handleLogout = () => {
     dispatch(logOut());
     navigate("/sign-in");

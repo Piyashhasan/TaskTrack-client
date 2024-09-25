@@ -12,7 +12,6 @@ const CompleteTask = () => {
         <h2 className="text-[24px] font-bold leading-8 text-black">
           Complete Tasks
         </h2>
-        {/* <PriorityFilterBtn /> */}
       </div>
       <Task filterTasks={completeTask} />
     </div>

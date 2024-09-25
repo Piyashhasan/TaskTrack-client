@@ -6,6 +6,7 @@ const AddTaskForm = ({ setVisible }) => {
   const [createTask, { isLoading, isSuccess, isError }] =
     useCreateTaskMutation();
 
+  // --- form state ---
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -14,6 +15,7 @@ const AddTaskForm = ({ setVisible }) => {
     completed: "",
   });
 
+  // --- handle form input change value ---
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -22,6 +24,7 @@ const AddTaskForm = ({ setVisible }) => {
     }));
   };
 
+  // --- handle form submit ---
   const handleSubmit = async (e) => {
     e.preventDefault();
     const taskData = {
@@ -45,7 +48,7 @@ const AddTaskForm = ({ setVisible }) => {
     });
   };
 
-  // --- Toast notifications ---
+  // --- handle toast notifications ---
   useEffect(() => {
     if (isLoading) {
       toast.loading("Loading ...", { id: "createTask" });
@@ -60,6 +63,7 @@ const AddTaskForm = ({ setVisible }) => {
 
   return (
     <div className="px-5 pb-5">
+      {/* --- form start --- */}
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-2">
           <label className="text-black" htmlFor="title">
@@ -70,6 +74,7 @@ const AddTaskForm = ({ setVisible }) => {
             placeholder="Task Title"
             type="text"
             name="title"
+            id="title"
             value={formData.title}
             onChange={handleChange}
             required
@@ -82,6 +87,7 @@ const AddTaskForm = ({ setVisible }) => {
           <textarea
             className="bg-[#F9F9F9] py-2 px-3 rounded-md border text-[14px] resize-none"
             name="description"
+            id="description"
             placeholder="Task Description"
             rows={4}
             value={formData.description}
@@ -96,6 +102,7 @@ const AddTaskForm = ({ setVisible }) => {
           <select
             className="bg-[#F9F9F9] py-2 px-3 text-[14px] rounded-md border cursor-pointer"
             name="priority"
+            id="priority"
             value={formData.priority}
             onChange={handleChange}
             required
@@ -113,6 +120,7 @@ const AddTaskForm = ({ setVisible }) => {
             className="bg-[#F9F9F9] py-2 px-3 text-[14px] rounded-md border"
             type="date"
             name="dueDate"
+            id="dueDate"
             value={formData.dueDate}
             onChange={handleChange}
             required
@@ -130,6 +138,7 @@ const AddTaskForm = ({ setVisible }) => {
               <select
                 className="bg-[#F9F9F9] text-[14px] py-2 px-3 rounded-md border cursor-pointer"
                 name="completed"
+                id="completed"
                 value={formData.completed}
                 onChange={handleChange}
                 required
@@ -147,6 +156,7 @@ const AddTaskForm = ({ setVisible }) => {
           Create Task
         </button>
       </form>
+      {/* --- form end --- */}
     </div>
   );
 };

@@ -1,13 +1,8 @@
-import { useState } from "react";
 import userIcon from "../../../assets/images/user.png";
 import ActivityChart from "../ActivityChart/ActivityChart";
-import { Dialog } from "primereact/dialog";
-import ProfileForm from "../ProfileForm/ProfileForm";
 import { useSelector } from "react-redux";
 
 const AsideBar = () => {
-  const [visible, setVisible] = useState(false);
-
   const { name } = useSelector((state) => state.auth.user);
   const { allTasks } = useSelector((state) => state.tasks);
 
@@ -28,18 +23,17 @@ const AsideBar = () => {
     return dueDate < currentDate && !task.completed;
   });
 
+  // --- chart data set ---
   const data = {
     labels: ["Complete", "Pending"],
     values: [completeTask, pendingTask],
     backgroundColor: ["#2FCD71", "#EB4E31"],
   };
+
   return (
     <aside className="h-[calc(100vh-90px)] bg-[#F9F9F9] min-w-[300px] p-5 overflow-y-scroll">
       {/* --- user info start --- */}
-      <div
-        onClick={() => setVisible(true)}
-        className="flex items-center gap-x-4 bg-[#EFEFEF] px-2 py-3 rounded-lg border-2 border-[#EFEFEF] cursor-pointer hover:border-2 hover:border-[#fff]"
-      >
+      <div className="flex items-center gap-x-4 bg-[#EFEFEF] px-2 py-3 rounded-lg border-2 border-[#EFEFEF] cursor-pointer hover:border-2 hover:border-[#fff]">
         <div className="min-w-[70px] min-h-[70px] flex items-center justify-center bg-[#222161] object-cover object-center rounded-full">
           <img
             className="w-[40px] h-[40px] object-cover object-center rounded-md"
@@ -111,18 +105,6 @@ const AsideBar = () => {
         </div>
       </div>
       {/* --- chart section end --- */}
-
-      <Dialog
-        visible={visible}
-        onHide={() => {
-          if (!visible) return;
-          setVisible(false);
-        }}
-        style={{ width: "40vw" }}
-        breakpoints={{ "960px": "75vw", "641px": "100vw" }}
-      >
-        <ProfileForm setVisible={setVisible} />
-      </Dialog>
     </aside>
   );
 };

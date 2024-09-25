@@ -3,6 +3,7 @@ import { useUpdateTaskMutation } from "../../../services/tasksApi";
 import toast from "react-hot-toast";
 
 const TaskEditForm = ({ setVisible, task }) => {
+  // --- update task function call from rtq query ---
   const [updateTask, { isLoading, isSuccess, isError }] =
     useUpdateTaskMutation();
 
@@ -66,6 +67,7 @@ const TaskEditForm = ({ setVisible, task }) => {
 
   return (
     <div className="px-5 pb-5">
+      {/* --- form start --- */}
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-2">
           <label className="text-black" htmlFor="title">
@@ -76,6 +78,7 @@ const TaskEditForm = ({ setVisible, task }) => {
             placeholder="Task Title"
             type="text"
             name="title"
+            id="title"
             value={formData.title}
             onChange={handleChange}
           />
@@ -87,6 +90,7 @@ const TaskEditForm = ({ setVisible, task }) => {
           <textarea
             className="bg-[#F9F9F9] py-2 px-3 rounded-md border text-[14px] resize-none"
             name="description"
+            id="description"
             placeholder="Task Description"
             rows={4}
             value={formData.description}
@@ -100,6 +104,7 @@ const TaskEditForm = ({ setVisible, task }) => {
           <select
             className="bg-[#F9F9F9] py-2 px-3 text-[14px] rounded-md border cursor-pointer"
             name="priority"
+            id="priority"
             value={formData.priority}
             onChange={handleChange}
           >
@@ -116,6 +121,7 @@ const TaskEditForm = ({ setVisible, task }) => {
             className="bg-[#F9F9F9] py-2 px-3 text-[14px] rounded-md border"
             type="date"
             name="dueDate"
+            id="dueDate"
             value={formData.dueDate}
             onChange={(e) =>
               setFormData({ ...formData, dueDate: e.target.value })
@@ -133,6 +139,7 @@ const TaskEditForm = ({ setVisible, task }) => {
             <select
               className="bg-[#F9F9F9] text-[14px] py-2 px-3 rounded-md border cursor-pointer"
               name="completed"
+              id="completed"
               value={formData.completed}
               onChange={handleChange}
             >
@@ -148,6 +155,7 @@ const TaskEditForm = ({ setVisible, task }) => {
           Update Task
         </button>
       </form>
+      {/* --- form end --- */}
     </div>
   );
 };

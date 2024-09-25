@@ -14,6 +14,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // --- user get from store ---
   const { user } = useSelector((state) => state.auth);
 
   const { isSuccess, isLoading, isError, errorMessage } = useSelector(
@@ -23,6 +24,7 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword(!showPassword);
 
+  // --- form state ---
   const {
     register,
     formState: { errors },
@@ -49,7 +51,9 @@ const SignIn = () => {
   useEffect(() => {
     if (user.name && user.email) {
       toast.success("Sign in", { id: "signIn" });
-      navigate("/dashboard");
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 800);
     }
   }, [user, navigate]);
 
@@ -70,6 +74,7 @@ const SignIn = () => {
   return (
     <div className="wrapper py-5">
       <div className="flex items-center justify-center">
+        {/* --- sign in form start --- */}
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="relative m-[2rem] px-10 py-14 rounded-lg w-full max-w-[520px] shadow-[0px_10px_36px_0px_rgba(0,0,0,0.16),_0px_0px_0px_1px_rgba(0,0,0,0.06)]"
@@ -170,6 +175,7 @@ const SignIn = () => {
             </div>
           </div>
         </form>
+        {/* --- sign in form end --- */}
       </div>
     </div>
   );
