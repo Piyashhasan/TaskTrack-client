@@ -11,9 +11,10 @@ const Home = () => {
           </h1>
           <p className="text-[14px] sm:text-[16px] text-gray-700 leading-7">
             Welcome to <span className="text-[#40C057]">Task Track!</span>{" "}
-            Easily organize tasks, track progress, <br /> and boost
-            productivity. Say goodbye to chaos, hello to <br /> efficiency. Get
-            started now!
+            Easily organize tasks, track progress,{" "}
+            <br className="hidden sm:block" /> and boost productivity. Say
+            goodbye to chaos, hello to <br className="hidden sm:block" />{" "}
+            efficiency. Get started now!
           </p>
           <Link to="/dashboard">
             <button className="my-10 bg-[#2FCD71] px-10 py-3 text-white rounded-md">
