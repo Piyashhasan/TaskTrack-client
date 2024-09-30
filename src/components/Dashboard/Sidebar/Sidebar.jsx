@@ -22,7 +22,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-110px)] sm:h-[calc(100vh-90px)] bg-[#F9F9F9] px-3 sm:px-[20px] pt-10 relative all-task">
+    <div className="h-[calc(100vh-118px)] sm:h-[calc(100vh-90px)] bg-[#F9F9F9] px-3 sm:px-[20px] pt-10 relative all-task">
       <ul className="flex flex-col items-center gap-y-10">
         <li className="relative group">
           <NavLink
